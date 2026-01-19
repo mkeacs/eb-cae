@@ -1,12 +1,55 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useRef } from "react";
+import HeroSection from "@/components/HeroSection";
+import RegistrationForm from "@/components/RegistrationForm";
+import RegulationSection from "@/components/RegulationSection";
+import SuccessScreen from "@/components/SuccessScreen";
+import Footer from "@/components/Footer";
 
 const Index = () => {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+  const [showSuccess, setShowSuccess] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
+  const regulationRef = useRef<HTMLDivElement>(null);
+
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToRegulation = () => {
+    regulationRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSuccess = () => {
+    setShowSuccess(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleBackToHome = () => {
+    setShowSuccess(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (showSuccess) {
+    return (
+      <div className="min-h-screen bg-background">
+        <SuccessScreen onBack={handleBackToHome} />
+        <Footer />
       </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <HeroSection onParticipate={scrollToForm} onRegulation={scrollToRegulation} />
+      
+      <div ref={formRef}>
+        <RegistrationForm onSuccess={handleSuccess} />
+      </div>
+      
+      <div ref={regulationRef}>
+        <RegulationSection />
+      </div>
+      
+      <Footer />
     </div>
   );
 };
