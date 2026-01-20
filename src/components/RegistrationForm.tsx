@@ -16,7 +16,8 @@ const formSchema = z.object({
   // Informações Profissionais
   profissao: z.string().min(1, "Profissão é obrigatória"),
   cadastroCAE: z.string().optional(),
-  timeTorce: z.string().min(1, "Selecione seu time"),
+  // ALTERAÇÃO 1: Mensagem de validação atualizada
+  timeTorce: z.string().min(2, "Digite o nome do seu time"), 
   
   // Termos
   aceitoTermos: z.boolean().refine(val => val === true, "Você deve aceitar os termos"),
@@ -38,19 +39,7 @@ const profissoes = [
   "Outro",
 ];
 
-const times = [
-  "Bahia",
-  "Vitória",
-  "Flamengo",
-  "Corinthians",
-  "Palmeiras",
-  "São Paulo",
-  "Santos",
-  "Grêmio",
-  "Internacional",
-  "Outro",
-  "Não torço",
-];
+// ALTERAÇÃO 2: A array 'const times = [...]' foi removida pois não é mais usada.
 
 const estados = [
   "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA",
@@ -287,14 +276,14 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
                 </p>
               </div>
 
+              {/* ALTERAÇÃO 3: Campo alterado de Select para Input */}
               <div>
                 <label className="block text-sm font-medium mb-2">Time que Torce *</label>
-                <select {...register("timeTorce")} className="input-field">
-                  <option value="">Selecione seu time</option>
-                  {times.map((time) => (
-                    <option key={time} value={time}>{time}</option>
-                  ))}
-                </select>
+                <input 
+                  {...register("timeTorce")} 
+                  className="input-field"
+                  placeholder="Digite seu time do coração"
+                />
                 {errors.timeTorce && (
                   <p className="text-destructive text-sm mt-1">{errors.timeTorce.message}</p>
                 )}
