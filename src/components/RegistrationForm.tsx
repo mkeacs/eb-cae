@@ -6,7 +6,6 @@ import { CheckCircle2, User, Briefcase, FileText } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  // Dados Pessoais
   nomeCompleto: z.string().min(3, "Nome deve ter pelo menos 3 caracteres").max(100),
   cpf: z.string().min(11, "CPF inválido").max(14).regex(/^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/, "CPF inválido"),
   telefone: z.string().min(10, "Telefone inválido").max(15),
@@ -121,7 +120,6 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
           </p>
         </div>
 
-        {/* Progress Steps */}
         <div className="flex justify-center mb-10">
           <div className="flex items-center gap-4">
             {[1, 2, 3].map((step) => (
