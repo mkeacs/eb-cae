@@ -16,7 +16,6 @@ const formSchema = z.object({
   // Informações Profissionais
   profissao: z.string().min(1, "Profissão é obrigatória"),
   cadastroCAE: z.string().optional(),
-  // ALTERAÇÃO 1: Mensagem de validação atualizada
   timeTorce: z.string().min(2, "Digite o nome do seu time"), 
   
   // Termos
@@ -38,8 +37,6 @@ const profissoes = [
   "Instalador",
   "Outro",
 ];
-
-// ALTERAÇÃO 2: A array 'const times = [...]' foi removida pois não é mais usada.
 
 const estados = [
   "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA",
@@ -99,11 +96,11 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
   const prevStep = () => setCurrentStep(prev => prev - 1);
 
   return (
-    <section id="participar" className="py-20 px-4">
+    <section id="participar" className="py-20 px-4 bg-gradient-to-b from-slate-50 to-white">
       <div className="container max-w-3xl mx-auto">
         <div className="text-center mb-12 fade-in">
           <h2 className="section-title mb-4">Cadastre-se</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Bem-vindo ao Programa Fidelidade do CAE! Esse programa foi criado especialmente para valorizar você, 
             eletricista, por sua participação em treinamentos, eventos e compras de materiais.
           </p>
@@ -115,14 +112,14 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
               <div key={step} className="flex items-center">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
                   currentStep >= step 
-                    ? 'bg-primary text-primary-foreground' 
-                    : 'bg-muted text-muted-foreground'
+                    ? 'bg-primary text-white shadow-lg' 
+                    : 'bg-slate-200 text-slate-500'
                 }`}>
                   {currentStep > step ? <CheckCircle2 className="w-5 h-5" /> : step}
                 </div>
                 {step < 3 && (
                   <div className={`w-16 h-1 mx-2 rounded transition-all duration-300 ${
-                    currentStep > step ? 'bg-primary' : 'bg-muted'
+                    currentStep > step ? 'bg-primary' : 'bg-slate-200'
                   }`} />
                 )}
               </div>
@@ -133,15 +130,15 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
         {/* Step Labels */}
         <div className="flex justify-center mb-8">
           <div className="flex items-center gap-8 text-sm">
-            <div className={`flex items-center gap-2 ${currentStep === 1 ? 'text-primary' : 'text-muted-foreground'}`}>
+            <div className={`flex items-center gap-2 ${currentStep === 1 ? 'text-primary font-semibold' : 'text-slate-500'}`}>
               <User className="w-4 h-4" />
               <span>Dados Pessoais</span>
             </div>
-            <div className={`flex items-center gap-2 ${currentStep === 2 ? 'text-primary' : 'text-muted-foreground'}`}>
+            <div className={`flex items-center gap-2 ${currentStep === 2 ? 'text-primary font-semibold' : 'text-slate-500'}`}>
               <Briefcase className="w-4 h-4" />
               <span>Profissional</span>
             </div>
-            <div className={`flex items-center gap-2 ${currentStep === 3 ? 'text-primary' : 'text-muted-foreground'}`}>
+            <div className={`flex items-center gap-2 ${currentStep === 3 ? 'text-primary font-semibold' : 'text-slate-500'}`}>
               <FileText className="w-4 h-4" />
               <span>Termos</span>
             </div>
@@ -153,24 +150,26 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
           {currentStep === 1 && (
             <div className="space-y-6">
               <h3 className="text-xl font-bold text-primary mb-6 flex items-center gap-2">
-                <User className="w-5 h-5" />
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                  <User className="w-4 h-4 text-primary" />
+                </div>
                 Dados Pessoais
               </h3>
               
               <div>
-                <label className="block text-sm font-medium mb-2">Nome Completo *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Nome Completo *</label>
                 <input
                   {...register("nomeCompleto")}
                   className="input-field"
                   placeholder="Digite seu nome completo"
                 />
                 {errors.nomeCompleto && (
-                  <p className="text-destructive text-sm mt-1">{errors.nomeCompleto.message}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.nomeCompleto.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">CPF *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">CPF *</label>
                 <input
                   {...register("cpf")}
                   className="input-field"
@@ -181,12 +180,12 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
                   maxLength={14}
                 />
                 {errors.cpf && (
-                  <p className="text-destructive text-sm mt-1">{errors.cpf.message}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.cpf.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Telefone com WhatsApp *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Telefone com WhatsApp *</label>
                 <input
                   {...register("telefone")}
                   className="input-field"
@@ -197,12 +196,12 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
                   maxLength={15}
                 />
                 {errors.telefone && (
-                  <p className="text-destructive text-sm mt-1">{errors.telefone.message}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.telefone.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">E-mail *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">E-mail *</label>
                 <input
                   {...register("email")}
                   type="email"
@@ -210,25 +209,25 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
                   placeholder="seu@email.com"
                 />
                 {errors.email && (
-                  <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
                 )}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Cidade *</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Cidade *</label>
                   <input
                     {...register("cidade")}
                     className="input-field"
                     placeholder="Sua cidade"
                   />
                   {errors.cidade && (
-                    <p className="text-destructive text-sm mt-1">{errors.cidade.message}</p>
+                    <p className="text-red-500 text-sm mt-1">{errors.cidade.message}</p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Estado *</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Estado *</label>
                   <select {...register("estado")} className="input-field">
                     <option value="">Selecione</option>
                     {estados.map((uf) => (
@@ -236,7 +235,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
                     ))}
                   </select>
                   {errors.estado && (
-                    <p className="text-destructive text-sm mt-1">{errors.estado.message}</p>
+                    <p className="text-red-500 text-sm mt-1">{errors.estado.message}</p>
                   )}
                 </div>
               </div>
@@ -247,12 +246,14 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
           {currentStep === 2 && (
             <div className="space-y-6">
               <h3 className="text-xl font-bold text-primary mb-6 flex items-center gap-2">
-                <Briefcase className="w-5 h-5" />
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Briefcase className="w-4 h-4 text-primary" />
+                </div>
                 Informações Profissionais
               </h3>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Profissão *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Profissão *</label>
                 <select {...register("profissao")} className="input-field">
                   <option value="">Selecione sua profissão</option>
                   {profissoes.map((prof) => (
@@ -260,32 +261,31 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
                   ))}
                 </select>
                 {errors.profissao && (
-                  <p className="text-destructive text-sm mt-1">{errors.profissao.message}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.profissao.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Número de Cadastro no CAE</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Número de Cadastro no CAE</label>
                 <input
                   {...register("cadastroCAE")}
                   className="input-field"
                   placeholder="Se já for cadastrado (opcional)"
                 />
-                <p className="text-muted-foreground text-xs mt-1">
+                <p className="text-slate-500 text-xs mt-1">
                   Caso não possua, será criado automaticamente
                 </p>
               </div>
 
-              {/* ALTERAÇÃO 3: Campo alterado de Select para Input */}
               <div>
-                <label className="block text-sm font-medium mb-2">Time que Torce *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Time que Torce *</label>
                 <input 
                   {...register("timeTorce")} 
                   className="input-field"
                   placeholder="Digite seu time do coração"
                 />
                 {errors.timeTorce && (
-                  <p className="text-destructive text-sm mt-1">{errors.timeTorce.message}</p>
+                  <p className="text-red-500 text-sm mt-1">{errors.timeTorce.message}</p>
                 )}
               </div>
             </div>
@@ -295,11 +295,13 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
           {currentStep === 3 && (
             <div className="space-y-6">
               <h3 className="text-xl font-bold text-primary mb-6 flex items-center gap-2">
-                <FileText className="w-5 h-5" />
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                  <FileText className="w-4 h-4 text-primary" />
+                </div>
                 Termos e Condições
               </h3>
 
-              <div className="bg-muted/30 rounded-lg p-4 max-h-60 overflow-y-auto text-sm text-muted-foreground">
+              <div className="bg-slate-50 rounded-lg p-4 max-h-60 overflow-y-auto text-sm text-slate-600 border border-slate-200">
                 <p className="mb-4">
                   Ao participar do Programa Fidelidade CAE, você concorda com as seguintes condições:
                 </p>
@@ -316,20 +318,20 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
                 <input
                   type="checkbox"
                   {...register("aceitoTermos")}
-                  className="w-5 h-5 mt-0.5 rounded border-border bg-input accent-primary"
+                  className="w-5 h-5 mt-0.5 rounded border-slate-300 bg-white accent-primary"
                 />
-                <span className="text-sm group-hover:text-primary transition-colors">
-                  Li e aceito os <strong>Termos e Condições</strong> do Programa Fidelidade CAE
+                <span className="text-sm text-slate-600 group-hover:text-primary transition-colors">
+                  Li e aceito os <strong className="text-primary">Termos e Condições</strong> do Programa Fidelidade CAE
                 </span>
               </label>
               {errors.aceitoTermos && (
-                <p className="text-destructive text-sm">{errors.aceitoTermos.message}</p>
+                <p className="text-red-500 text-sm">{errors.aceitoTermos.message}</p>
               )}
             </div>
           )}
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between mt-8 pt-6 border-t border-border">
+          <div className="flex justify-between mt-8 pt-6 border-t border-slate-200">
             {currentStep > 1 ? (
               <button type="button" onClick={prevStep} className="btn-outline-hero">
                 Voltar
