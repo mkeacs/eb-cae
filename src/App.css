@@ -1,45 +1,132 @@
-/* App.css - Clean styles for Elétrica Bahiana Portal */
+/* App.css - Elétrica Bahiana CAE Fidelidade */
 
 #root {
   min-height: 100vh;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #94a3b8;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
-}
-
-/* Selection color */
-::selection {
-  background: hsl(217 91% 60% / 0.3);
-  color: #1e293b;
-}
-
 /* Focus styles for accessibility */
 *:focus-visible {
-  outline: 2px solid hsl(217 91% 60%);
+  outline: 2px solid hsl(217 91% 30%);
   outline-offset: 2px;
 }
 
 /* Transition defaults */
 * {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Logo EB Style */
+.logo-eb {
+  background: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: hsl(217 91% 30%);
+  letter-spacing: -0.05em;
+}
+
+/* Glow effects */
+.glow-yellow {
+  box-shadow: 0 0 40px hsl(45 93% 47% / 0.3);
+}
+
+.glow-blue {
+  box-shadow: 0 0 40px hsl(217 91% 30% / 0.3);
+}
+
+/* Background patterns */
+.bg-dots {
+  background-image: radial-gradient(circle, hsl(217 91% 30% / 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(217 91% 30%) 0%, hsl(217 91% 50%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover lift effect */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress step connector */
+.step-connector {
+  height: 2px;
+  background: linear-gradient(90deg, hsl(217 91% 30%) 0%, hsl(217 91% 60%) 100%);
+}
+
+/* Form label style */
+.form-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: hsl(215 16% 47%);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Badge style */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.badge-primary {
+  background: hsl(217 91% 30% / 0.1);
+  color: hsl(217 91% 30%);
+  border: 1px solid hsl(217 91% 30% / 0.2);
+}
+
+.badge-success {
+  background: hsl(142 76% 36% / 0.1);
+  color: hsl(142 76% 36%);
+}
+
+/* Accordion animation */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  background: hsl(222 47% 11%);
+  color: white;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
 }

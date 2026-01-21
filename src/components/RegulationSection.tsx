@@ -102,31 +102,34 @@ O catálogo de prêmios será divulgado periodicamente.`,
 
 const RegulationSection = () => {
   return (
-    <section id="regulamento" className="py-20 px-4 bg-white">
+    <section id="regulamento" className="py-20 px-4 bg-slate-50">
       <div className="container max-w-4xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="section-title mb-4">Regulamento</h2>
-          <p className="text-lg text-slate-600">
+          <span className="section-subtitle">Regras do Programa</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-3">Regulamento</h2>
+          <p className="text-slate-600">
             Programa Fidelidade CAE — Centro de Apoio ao Eletricista
           </p>
-          <p className="text-sm text-slate-500 mt-2">
+          <p className="text-sm text-slate-500 mt-1">
             Uma iniciativa da Elétrica Bahiana para valorizar, reconhecer e premiar os eletricistas
           </p>
         </div>
 
-        <div className="regulation-card">
-          <Accordion type="single" collapsible className="space-y-2">
+        {/* Accordion */}
+        <div className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden">
+          <Accordion type="single" collapsible className="divide-y divide-slate-100">
             {regulations.map((reg) => (
-              <AccordionItem key={reg.id} value={reg.id} className="border-slate-200">
-                <AccordionTrigger className="hover:text-primary transition-colors py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                      <reg.icon className="w-4 h-4 text-primary" />
+              <AccordionItem key={reg.id} value={reg.id} className="border-none">
+                <AccordionTrigger className="hover:bg-slate-50 transition-colors px-6 py-5 hover:no-underline">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <reg.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <span className="font-semibold text-left text-slate-700">{reg.title}</span>
+                    <span className="font-semibold text-left text-slate-800">{reg.title}</span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-600 whitespace-pre-line pl-11 pb-4">
+                <AccordionContent className="text-slate-600 whitespace-pre-line px-6 pb-5 pl-20">
                   {reg.content}
                 </AccordionContent>
               </AccordionItem>
@@ -134,13 +137,19 @@ const RegulationSection = () => {
           </Accordion>
         </div>
 
-        {/* Message */}
+        {/* CTA Box */}
         <div className="mt-12 text-center">
-          <div className="inline-block bg-blue-50 border border-blue-200 rounded-2xl px-8 py-6 shadow-sm">
-            <p className="text-lg font-bold text-primary mb-2">Programa Fidelidade CAE</p>
-            <p className="text-slate-600">
+          <div className="inline-block bg-gradient-to-r from-primary to-blue-600 rounded-2xl px-10 py-8 shadow-lg">
+            <p className="text-2xl font-bold text-white mb-2">Programa Fidelidade CAE</p>
+            <p className="text-blue-100 mb-4">
               Mais que treinamento. Reconhecimento, crescimento e valorização do eletricista.
             </p>
+            <a 
+              href="#participar" 
+              className="inline-block bg-white text-primary font-bold px-8 py-3 rounded-full hover:bg-blue-50 transition-colors"
+            >
+              Cadastrar Agora
+            </a>
           </div>
         </div>
       </div>
