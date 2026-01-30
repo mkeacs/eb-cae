@@ -105,7 +105,7 @@ const RegulationSection = () => {
     <section id="regulamento" className="py-20 px-4 bg-slate-50">
       <div className="container max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <span className="section-subtitle">Regras do Programa</span>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-3">Regulamento</h2>
           <p className="text-slate-600">
@@ -121,15 +121,15 @@ const RegulationSection = () => {
           <Accordion type="single" collapsible className="divide-y divide-slate-100">
             {regulations.map((reg) => (
               <AccordionItem key={reg.id} value={reg.id} className="border-none">
-                <AccordionTrigger className="hover:bg-slate-50 transition-colors px-6 py-5 hover:no-underline">
+                <AccordionTrigger className="hover:bg-slate-50 transition-colors px-6 py-4 hover:no-underline">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <reg.icon className="w-5 h-5 text-primary" />
+                    <div className="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <reg.icon className="w-4 h-4 text-[#0A1F5C]" />
                     </div>
-                    <span className="font-semibold text-left text-slate-800">{reg.title}</span>
+                    <span className="font-semibold text-left text-slate-800 text-sm">{reg.title}</span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-600 whitespace-pre-line px-6 pb-5 pl-20">
+                <AccordionContent className="text-slate-600 whitespace-pre-line px-6 pb-5 pl-[4.5rem] text-sm">
                   {reg.content}
                 </AccordionContent>
               </AccordionItem>
@@ -139,14 +139,14 @@ const RegulationSection = () => {
 
         {/* CTA Box */}
         <div className="mt-12 text-center">
-          <div className="inline-block bg-gradient-to-r from-primary to-blue-600 rounded-2xl px-10 py-8 shadow-lg">
-            <p className="text-2xl font-bold text-white mb-2">Programa Fidelidade CAE</p>
-            <p className="text-blue-100 mb-4">
+          <div className="inline-block bg-[#0A1F5C] rounded-2xl px-10 py-8 shadow-xl max-w-md w-full">
+            <p className="text-xl font-bold text-white mb-2">Programa Fidelidade CAE</p>
+            <p className="text-blue-200 text-sm mb-5">
               Mais que treinamento. Reconhecimento, crescimento e valorização do eletricista.
             </p>
             <a 
               href="#participar" 
-              className="inline-block bg-white text-primary font-bold px-8 py-3 rounded-full hover:bg-blue-50 transition-colors"
+              className="inline-block bg-white text-[#0A1F5C] font-bold px-8 py-3 rounded-md hover:bg-blue-50 transition-colors text-sm"
             >
               Cadastrar Agora
             </a>
