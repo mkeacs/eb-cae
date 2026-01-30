@@ -2,13 +2,68 @@ import { MapPin, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="relative text-white overflow-hidden" style={{ background: 'linear-gradient(135deg, #0A1F5C 0%, #1E3A8A 100%)' }}>
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l26 15v30L30 60 4 45V15z' fill='none' stroke='%23ffffff' stroke-opacity='0.3'/%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }} />
+    <footer className="relative text-white overflow-hidden" style={{ background: 'linear-gradient(120deg, #E31E24 0%, #1E40AF 30%, #0A1F5C 70%, #050D2E 100%)' }}>
+      {/* Circuit board pattern */}
+      <div className="absolute inset-0 overflow-hidden">
+        <svg className="absolute bottom-0 left-0 w-full h-48 opacity-20" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          {/* Circuit lines group 1 - left side */}
+          <g stroke="rgba(147, 197, 253, 0.5)" strokeWidth="1" fill="none">
+            <path d="M50 200 L50 150 L30 130 L30 100" />
+            <circle cx="30" cy="100" r="4" fill="rgba(147, 197, 253, 0.5)" />
+            <path d="M80 200 L80 120 L100 100 L100 60" />
+            <circle cx="100" cy="60" r="4" fill="rgba(147, 197, 253, 0.5)" />
+            <path d="M120 200 L120 170 L140 150 L140 80" />
+            <circle cx="140" cy="80" r="4" fill="rgba(147, 197, 253, 0.5)" />
+            <path d="M160 200 L160 140" />
+            <circle cx="160" cy="140" r="3" fill="rgba(147, 197, 253, 0.5)" />
+            <path d="M200 200 L200 160 L180 140 L180 90" />
+            <circle cx="180" cy="90" r="4" fill="rgba(147, 197, 253, 0.5)" />
+          </g>
+          {/* Circuit lines group 2 - center left */}
+          <g stroke="rgba(147, 197, 253, 0.4)" strokeWidth="1" fill="none">
+            <path d="M300 200 L300 130 L320 110 L320 70" />
+            <circle cx="320" cy="70" r="4" fill="rgba(147, 197, 253, 0.4)" />
+            <path d="M350 200 L350 180 L370 160 L370 100" />
+            <circle cx="370" cy="100" r="3" fill="rgba(147, 197, 253, 0.4)" />
+            <path d="M400 200 L400 150" />
+            <circle cx="400" cy="150" r="4" fill="rgba(147, 197, 253, 0.4)" />
+            <path d="M450 200 L450 160 L430 140 L430 80" />
+            <circle cx="430" cy="80" r="3" fill="rgba(147, 197, 253, 0.4)" />
+          </g>
+          {/* Circuit lines group 3 - center */}
+          <g stroke="rgba(147, 197, 253, 0.3)" strokeWidth="1" fill="none">
+            <path d="M550 200 L550 140 L570 120 L570 60" />
+            <circle cx="570" cy="60" r="4" fill="rgba(147, 197, 253, 0.3)" />
+            <path d="M600 200 L600 170 L620 150 L620 90" />
+            <circle cx="620" cy="90" r="3" fill="rgba(147, 197, 253, 0.3)" />
+            <path d="M650 200 L650 130" />
+            <circle cx="650" cy="130" r="4" fill="rgba(147, 197, 253, 0.3)" />
+            <path d="M700 200 L700 160 L680 140 L680 70" />
+            <circle cx="680" cy="70" r="3" fill="rgba(147, 197, 253, 0.3)" />
+          </g>
+          {/* Circuit lines group 4 - center right */}
+          <g stroke="rgba(147, 197, 253, 0.35)" strokeWidth="1" fill="none">
+            <path d="M800 200 L800 120 L820 100 L820 50" />
+            <circle cx="820" cy="50" r="4" fill="rgba(147, 197, 253, 0.35)" />
+            <path d="M850 200 L850 170 L870 150 L870 80" />
+            <circle cx="870" cy="80" r="3" fill="rgba(147, 197, 253, 0.35)" />
+            <path d="M900 200 L900 140" />
+            <circle cx="900" cy="140" r="4" fill="rgba(147, 197, 253, 0.35)" />
+            <path d="M950 200 L950 150 L930 130 L930 60" />
+            <circle cx="930" cy="60" r="3" fill="rgba(147, 197, 253, 0.35)" />
+          </g>
+          {/* Circuit lines group 5 - right side */}
+          <g stroke="rgba(147, 197, 253, 0.4)" strokeWidth="1" fill="none">
+            <path d="M1050 200 L1050 130 L1070 110 L1070 50" />
+            <circle cx="1070" cy="50" r="4" fill="rgba(147, 197, 253, 0.4)" />
+            <path d="M1100 200 L1100 160 L1120 140 L1120 70" />
+            <circle cx="1120" cy="70" r="3" fill="rgba(147, 197, 253, 0.4)" />
+            <path d="M1150 200 L1150 140" />
+            <circle cx="1150" cy="140" r="4" fill="rgba(147, 197, 253, 0.4)" />
+            <path d="M1180 200 L1180 170 L1160 150 L1160 90" />
+            <circle cx="1160" cy="90" r="3" fill="rgba(147, 197, 253, 0.4)" />
+          </g>
+        </svg>
       </div>
 
       {/* Main Footer */}
