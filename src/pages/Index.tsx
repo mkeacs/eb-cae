@@ -30,7 +30,7 @@ const Index = () => {
 
   if (showSuccess) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
         <SuccessScreen onBack={handleBackToHome} />
         <Footer />
       </div>
@@ -38,7 +38,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <HeroSection onParticipate={scrollToForm} onRegulation={scrollToRegulation} />
       
       <div ref={formRef}>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2, User, Briefcase, FileText, Check } from "lucide-react";
+import { User, Briefcase, FileText, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -105,39 +105,47 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
   ];
 
   return (
-    <section id="participar" className="py-20 px-4 bg-gradient-to-b from-slate-100 to-white">
-      <div className="container max-w-3xl mx-auto">
+    <section id="participar" className="py-20 px-4 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #e2e8f0 0%, #f1f5f9 100%)' }}>
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l26 15v30L30 60 4 45V15z' fill='none' stroke='%230A1F5C' stroke-opacity='0.3'/%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
+
+      <div className="container max-w-3xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 fade-in">
+        <div className="text-center mb-10 fade-in">
           <span className="section-subtitle">Faça Parte</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-4">Cadastre-se Agora</h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-3">Cadastre-se Agora</h2>
+          <p className="text-slate-600 max-w-xl mx-auto">
             Preencha o formulário abaixo e comece a acumular pontos imediatamente!
           </p>
         </div>
 
         {/* Progress Steps */}
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center mb-8">
           <div className="flex items-center gap-2 md:gap-4">
             {steps.map((step, i) => (
               <div key={step.num} className="flex items-center">
                 <div className="flex flex-col items-center">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${
                     currentStep >= step.num 
-                      ? 'bg-primary text-white shadow-lg' 
+                      ? 'bg-[#0A1F5C] text-white shadow-lg' 
                       : 'bg-slate-200 text-slate-500'
                   }`}>
-                    {currentStep > step.num ? <Check className="w-6 h-6" /> : step.num}
+                    {currentStep > step.num ? <Check className="w-5 h-5" /> : step.num}
                   </div>
-                  <span className={`text-xs mt-2 font-medium hidden md:block ${
-                    currentStep >= step.num ? 'text-primary' : 'text-slate-400'
+                  <span className={`text-xs mt-2 font-medium ${
+                    currentStep >= step.num ? 'text-[#0A1F5C]' : 'text-slate-400'
                   }`}>
                     {step.label}
                   </span>
                 </div>
                 {i < 2 && (
-                  <div className={`w-12 md:w-20 h-1 mx-2 md:mx-4 rounded transition-all duration-300 ${
-                    currentStep > step.num ? 'bg-primary' : 'bg-slate-200'
+                  <div className={`w-16 md:w-24 h-0.5 mx-2 transition-all duration-300 ${
+                    currentStep > step.num ? 'bg-[#0A1F5C]' : 'bg-slate-300'
                   }`} />
                 )}
               </div>
@@ -146,15 +154,15 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
         </div>
 
         {/* Form Card */}
-        <form onSubmit={handleSubmit(onSubmit)} className="form-section fade-in">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-slate-100 fade-in">
           {/* Step 1: Dados Pessoais */}
           {currentStep === 1 && (
             <div className="space-y-5">
-              <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-100">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <User className="w-5 h-5 text-primary" />
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <User className="w-5 h-5 text-[#0A1F5C]" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">Dados Pessoais</h3>
+                <h3 className="text-lg font-bold text-slate-800">Dados Pessoais</h3>
               </div>
               
               <div>
@@ -248,11 +256,11 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
           {/* Step 2: Informações Profissionais */}
           {currentStep === 2 && (
             <div className="space-y-5">
-              <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-100">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Briefcase className="w-5 h-5 text-primary" />
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <Briefcase className="w-5 h-5 text-[#0A1F5C]" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">Informações Profissionais</h3>
+                <h3 className="text-lg font-bold text-slate-800">Informações Profissionais</h3>
               </div>
 
               <div>
@@ -281,7 +289,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
               </div>
 
               <div>
-                <label className="form-label">Time do Coração ⚽ *</label>
+                <label className="form-label">Time do Coração *</label>
                 <input 
                   {...register("timeTorce")} 
                   className="input-field"
@@ -297,15 +305,15 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
           {/* Step 3: Termos e Confirmação */}
           {currentStep === 3 && (
             <div className="space-y-5">
-              <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-100">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <FileText className="w-5 h-5 text-primary" />
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <FileText className="w-5 h-5 text-[#0A1F5C]" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">Confirme seus Dados</h3>
+                <h3 className="text-lg font-bold text-slate-800">Confirme seus Dados</h3>
               </div>
 
               {/* Summary */}
-              <div className="bg-slate-50 rounded-2xl p-6 space-y-4">
+              <div className="bg-slate-50 rounded-xl p-5 space-y-4">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <span className="text-slate-500">Nome:</span>
@@ -335,9 +343,9 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
               </div>
 
               {/* Terms */}
-              <div className="bg-blue-50 rounded-2xl p-5 border border-blue-100">
-                <h4 className="font-semibold text-primary mb-3">Termos e Condições</h4>
-                <div className="text-sm text-blue-800/80 max-h-32 overflow-y-auto pr-2">
+              <div className="bg-blue-50 rounded-xl p-5 border border-blue-100">
+                <h4 className="font-semibold text-[#0A1F5C] mb-3">Termos e Condições</h4>
+                <div className="text-sm text-slate-600 max-h-32 overflow-y-auto pr-2">
                   <p className="mb-3">
                     Ao participar do Programa Fidelidade CAE, você concorda com as seguintes condições:
                   </p>
@@ -355,10 +363,10 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
                 <input
                   type="checkbox"
                   {...register("aceitoTermos")}
-                  className="w-5 h-5 mt-0.5 rounded border-slate-300 text-primary focus:ring-primary"
+                  className="w-5 h-5 mt-0.5 rounded border-slate-300 text-[#0A1F5C] focus:ring-[#0A1F5C]"
                 />
                 <span className="text-sm text-slate-600 group-hover:text-slate-800 transition-colors">
-                  Li e aceito os <strong className="text-primary">Termos e Condições</strong> do Programa Fidelidade CAE
+                  Li e aceito os <strong className="text-[#0A1F5C]">Termos e Condições</strong> do Programa Fidelidade CAE
                 </span>
               </label>
               {errors.aceitoTermos && (
@@ -368,7 +376,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
           )}
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between mt-10 pt-6 border-t border-slate-200">
+          <div className="flex justify-between mt-8 pt-6 border-t border-slate-200">
             {currentStep > 1 ? (
               <button type="button" onClick={prevStep} className="btn-secondary">
                 Voltar
@@ -385,7 +393,7 @@ const RegistrationForm = ({ onSuccess }: RegistrationFormProps) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-success disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Enviando..." : "Finalizar Cadastro"}
               </button>
