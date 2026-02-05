@@ -73,14 +73,13 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex items-center gap-2">
-                <div className="bg-white rounded px-2 py-1">
-                  <span className="text-[#0A1F5C] font-black text-lg">CAE</span>
-                </div>
-                <div className="text-white text-xs leading-tight">
-                  <span className="font-bold">CENTRO DE APOIO</span>
-                  <br />
-                  <span className="font-bold">AO ELETRICISTA</span>
-                </div>
+                  <div className="flex items-center gap-2">
+                    <img 
+                      src="/caelogo.png" 
+                      alt="CAE Logo" 
+                      className="h-8 w-auto brightness-0 invert"
+                    />
+                  </div>
               </div>
             </div>
             <p className="text-blue-200 text-sm leading-relaxed">
