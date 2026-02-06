@@ -73,13 +73,13 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-2">
-                    <img 
-                      src="/caelogo.png" 
-                      alt="CAE Logo" 
-                      className="h-8 w-auto brightness-0 invert"
-                    />
-                  </div>
+                    <div className="flex items-center gap-2">
+                      <img 
+                        src="/logo.png" 
+                        alt="Elétrica Bahiana Logo" 
+                        className="h-16 w-auto brightness-0 invert"
+                      />
+                    </div>
               </div>
             </div>
             <p className="text-blue-200 text-sm leading-relaxed">

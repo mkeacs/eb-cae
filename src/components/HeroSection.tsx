@@ -123,7 +123,8 @@ const HeroSection = ({ onParticipate, onRegulation }: HeroSectionProps) => {
               {/* Badge */}
               <div className="mb-6">
                 <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                  <Zap className="w-4 h-4 text-yellow-400" />
+                  {/* Troca de Zap por HardHat */}
+                  <HardHat className="w-4 h-4 text-yellow-400" /> 
                   <span className="text-white/90 font-medium text-sm">Centro de Apoio ao Eletricista</span>
                 </div>
               </div>
@@ -141,15 +142,13 @@ const HeroSection = ({ onParticipate, onRegulation }: HeroSectionProps) => {
               <p className="text-lg md:text-xl text-blue-100/90 mb-8 max-w-md leading-relaxed">
                 Cadastre-se agora, acumule pontos a cada compra e treinamento e troque por prêmios exclusivos!
               </p>
-
-                {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-4">
                   <button 
                     onClick={() => {
                       console.log("Botão Participar clicado!");
                       onParticipate();
                     }} 
-                    className="btn-hero relative z-50"
+                    className="btn-hero relative z-50 rounded-full" // Adicionado rounded-full
                     style={{ pointerEvents: 'auto' }}
                   >
                     Quero Participar
@@ -159,7 +158,7 @@ const HeroSection = ({ onParticipate, onRegulation }: HeroSectionProps) => {
                       console.log("Botão Regulamento clicado!");
                       onRegulation();
                     }} 
-                    className="btn-outline-hero relative z-50"
+                    className="btn-outline-hero relative z-50 rounded-full" // Adicionado rounded-full
                     style={{ pointerEvents: 'auto' }}
                   >
                     Ver Regulamento
