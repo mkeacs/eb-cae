@@ -5,7 +5,7 @@ import RegulationSection from "@/components/RegulationSection";
 import SuccessScreen from "@/components/SuccessScreen";
 import Footer from "@/components/Footer";
 
-const Index = () => {
+const CadastroFidelidade = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
   const regulationRef = useRef<HTMLDivElement>(null);
@@ -54,4 +54,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default CadastroFidelidade;
